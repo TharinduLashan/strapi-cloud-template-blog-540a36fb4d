@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_video_url_video_urls",
+  "info": {
+    "displayName": "VideoUrl",
+    "icon": "television"
+  },
+  "options": {},
+  "attributes": {
+    "Url": {
+      "type": "string"
+    },
+    "Thumbnail": {
+      "type": "string"
+    },
+    "ThumbnailImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

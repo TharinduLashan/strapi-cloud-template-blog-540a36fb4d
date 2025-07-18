@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "text"
+    },
+    "MainTitle": {
+      "type": "text"
+    },
+    "FeaturedImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Gallery": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ImageRatio": {
+      "type": "enumeration",
+      "enum": [
+        "Aspect-Ratio-3:2",
+        "Aspect-Ratio-3:4"
+      ]
+    },
+    "Content": {
+      "type": "blocks"
+    },
+    "HoverColor": {
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Type": {
+      "type": "string"
+    },
+    "Size": {
+      "type": "string"
+    },
+    "Year": {
+      "type": "string"
+    },
+    "ProjectTeam": {
+      "type": "text"
+    },
+    "RenderedServices": {
+      "type": "text"
+    },
+    "Photography": {
+      "type": "string"
+    }
+  }
+}

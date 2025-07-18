@@ -1,75 +1,66 @@
-import type { Struct, Schema } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/strapi';
 
-export interface SharedSlider extends Struct.ComponentSchema {
-  collectionName: 'components_shared_sliders';
+export interface AddressAddress extends Struct.ComponentSchema {
+  collectionName: 'components_address_addresses';
   info: {
-    displayName: 'Slider';
-    icon: 'address-book';
-    description: '';
+    displayName: 'Address';
+    icon: 'envelop';
   };
   attributes: {
-    files: Schema.Attribute.Media<'images', true>;
+    FullAddress: Schema.Attribute.Blocks;
+    LocationUrl: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
   };
 }
 
-export interface SharedSeo extends Struct.ComponentSchema {
-  collectionName: 'components_shared_seos';
+export interface GalleryGallery extends Struct.ComponentSchema {
+  collectionName: 'components_gallery_galleries';
   info: {
-    name: 'Seo';
-    icon: 'allergies';
-    displayName: 'Seo';
-    description: '';
+    displayName: 'Gallery';
+    icon: 'landscape';
+  };
+  attributes: {};
+}
+
+export interface TeamMemberTeamMember extends Struct.ComponentSchema {
+  collectionName: 'components_team_member_team_members';
+  info: {
+    displayName: 'TeamMember';
+    icon: 'user';
   };
   attributes: {
-    metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    shareImage: Schema.Attribute.Media<'images'>;
+    Content: Schema.Attribute.Blocks;
+    HoverColor: Schema.Attribute.String &
+      Schema.Attribute.CustomField<'plugin::color-picker.color'>;
+    Image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Name: Schema.Attribute.String;
+    Tagline: Schema.Attribute.String;
+    Title: Schema.Attribute.String;
   };
 }
 
-export interface SharedRichText extends Struct.ComponentSchema {
-  collectionName: 'components_shared_rich_texts';
+export interface VideoUrlVideoUrl extends Struct.ComponentSchema {
+  collectionName: 'components_video_url_video_urls';
   info: {
-    displayName: 'Rich text';
-    icon: 'align-justify';
-    description: '';
+    displayName: 'VideoUrl';
+    icon: 'television';
   };
   attributes: {
-    body: Schema.Attribute.RichText;
-  };
-}
-
-export interface SharedQuote extends Struct.ComponentSchema {
-  collectionName: 'components_shared_quotes';
-  info: {
-    displayName: 'Quote';
-    icon: 'indent';
-  };
-  attributes: {
-    title: Schema.Attribute.String;
-    body: Schema.Attribute.Text;
-  };
-}
-
-export interface SharedMedia extends Struct.ComponentSchema {
-  collectionName: 'components_shared_media';
-  info: {
-    displayName: 'Media';
-    icon: 'file-video';
-  };
-  attributes: {
-    file: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    Thumbnail: Schema.Attribute.String;
+    ThumbnailImage: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    Url: Schema.Attribute.String;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'shared.slider': SharedSlider;
-      'shared.seo': SharedSeo;
-      'shared.rich-text': SharedRichText;
-      'shared.quote': SharedQuote;
-      'shared.media': SharedMedia;
+      'address.address': AddressAddress;
+      'gallery.gallery': GalleryGallery;
+      'team-member.team-member': TeamMemberTeamMember;
+      'video-url.video-url': VideoUrlVideoUrl;
     }
   }
 }

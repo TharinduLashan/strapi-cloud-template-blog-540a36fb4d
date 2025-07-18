@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "tv_shows",
+  "info": {
+    "singularName": "tv-show",
+    "pluralName": "tv-shows",
+    "displayName": "Tv Show"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "SubTitle": {
+      "type": "string"
+    },
+    "Title": {
+      "type": "text"
+    },
+    "Description": {
+      "type": "text"
+    },
+    "VideoUrl": {
+      "type": "component",
+      "component": "video-url.video-url",
+      "repeatable": true
+    }
+  }
+}

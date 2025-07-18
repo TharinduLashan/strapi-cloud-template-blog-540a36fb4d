@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_team_member_team_members",
+  "info": {
+    "displayName": "TeamMember",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Tagline": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "blocks"
+    },
+    "HoverColor": {
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    },
+    "Title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
