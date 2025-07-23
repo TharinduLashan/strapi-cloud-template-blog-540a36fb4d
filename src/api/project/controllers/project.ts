@@ -9,8 +9,8 @@ export default factories.createCoreController(
   ({ strapi }) => ({
     // #1: Basic list
     async listBasic(ctx) {
-      const data = await strapi.db.query("api::project.project").findMany({
-        select: ["id", "Title", "HoverColor", "ImageRatio"],
+      const dataRaw = await strapi.db.query("api::project.project").findMany({
+        select: ["id", "documentId", "Title", "HoverColor", "ImageRatio"],
         populate: {
           FeaturedImage: {
             select: ["url"],
@@ -18,30 +18,41 @@ export default factories.createCoreController(
         },
       });
 
-      ctx.body = { data };
+      const uniqueProjects = dataRaw.filter(
+        (project, index, self) =>
+          index === self.findIndex((p) => p.documentId === project.documentId)
+      );
+
+      ctx.body = { data: uniqueProjects };
     },
 
     // #2: List with Gallery + Type
     async listWithGallery(ctx) {
-      const data = await strapi.db.query("api::project.project").findMany({
-        select: ["id", "Title", "Type"],
+      const dataRaw = await strapi.db.query("api::project.project").findMany({
+        select: ["id", "documentId", "Title", "Type"],
         populate: {
           FeaturedImage: { select: ["url"] },
           Gallery: { select: ["url"] },
         },
       });
 
-      ctx.body = { data };
+      const uniqueProjects = dataRaw.filter(
+        (project, index, self) =>
+          index === self.findIndex((p) => p.documentId === project.documentId)
+      );
+
+      ctx.body = { data: uniqueProjects };
     },
 
     // #3: Get by slug (ID or UID)
     async getBySlug(ctx) {
-      const { slug } = ctx.params;
+      const { documentId } = ctx.params;
 
       const data = await strapi.db.query("api::project.project").findOne({
-        where: { slug }, // or use `id: Number(slug)` if not using UID
+        where: { documentId: documentId }, // or use `id: Number(slug)` if not using UID
         select: [
           "id",
+          "documentId",
           "Title",
           "Content",
           "MainTitle",

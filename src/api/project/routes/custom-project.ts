@@ -18,7 +18,7 @@ export default {
     },
     {
       method: "GET",
-      path: "/projects/:slug/details",
+      path: "/projects/:documentId/details",
       handler: "project.getBySlug",
       config: {
         auth: false,
