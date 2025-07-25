@@ -29,7 +29,7 @@ export default factories.createCoreController(
     // #2: List with Gallery + Type
     async listWithGallery(ctx) {
       const dataRaw = await strapi.db.query("api::project.project").findMany({
-        select: ["id", "documentId", "Title", "Type"],
+        select: ["id", "documentId", "Title", "Year", "Type"],
         populate: {
           FeaturedImage: { select: ["url"] },
           Gallery: { select: ["url"] },
@@ -59,6 +59,7 @@ export default factories.createCoreController(
           "Description",
           "Type",
           "Size",
+          "Year",
           "ProjectTeam",
           "RenderedServices",
           "Photography",
